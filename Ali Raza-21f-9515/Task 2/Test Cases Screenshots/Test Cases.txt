@@ -1,0 +1,43 @@
+API
+    Login Page:
+        Test Case 1: Verify that the login page loads correctly with input fields for username and password.
+        Test Case 2: Check if the "Forgot Password" link is functional and leads to the password recovery page.
+    Input Validation:
+        Test Case 3: Test if the GUI displays an error message when submitting an empty username and password.
+        Test Case 4: Ensure that the system rejects login attempts with invalid characters in the username and password.
+    Button Functionality:
+        Test Case 5: Verify that the "Login" button logs the user in when valid credentials are entered.
+        Test Case 6: Confirm that the "Cancel" button clears the input fields.
+    Password Strength:
+        Test Case 7: Check if the system provides feedback on password strength when creating a new password.
+        Test Case 8: Ensure that the system enforces a minimum password strength level.
+    Session Handling:
+        Test Case 9: Test what happens when a user is inactive for a specified time (e.g., 15 minutes) and tries to resume the session.
+    Navigation:
+        Test Case 10: Confirm that all links and buttons are working and lead to the expected pages.
+        Test Case 11: Check that the "Back" button functions as expected to navigate to the previous page.
+    Error Handling:
+        Test Case 12: Test the GUI's behavior when the server is down or experiencing issues. Verify that appropriate error messages are displayed to the user.
+    Localization:
+        Test Case 13: Check if the GUI supports multiple languages. Verify that text labels change according to the selected language.
+GUI
+    Valid Login:
+        Test Case 1: Verify that a user can log in successfully with valid credentials, and the API returns a 200 OK response with an access token.
+    Invalid Username:
+        Test Case 2: Test logging in with an invalid or non-existing username. Ensure the API returns an error response (e.g., 401 Unauthorized) with an appropriate error message.
+    Invalid Password:
+        Test Case 3: Test logging in with a valid username and an incorrect password. Ensure the API returns an error response (e.g., 401 Unauthorized) with an appropriate error message.
+    Empty Fields:
+        Test Case 4: Attempt to log in with empty username and password fields. Verify that the API returns an error response (e.g., 400 Bad Request) with an appropriate error message.
+    Locked Account:
+        Test Case 5: Test the API's behavior when a user exceeds the maximum login attempts. Confirm that the account is locked and the API returns an appropriate error response.
+    Rate Limiting:
+        Test Case 6: Check if the API enforces rate limiting to prevent brute-force attacks. Send a large number of login requests in a short time frame and confirm that the API responds with rate-limit exceeded responses.
+    Error Handling:
+        Test Case 7: Validate that the API provides clear and informative error messages in response to various error scenarios.
+    Token Expiry:
+        Test Case 8: Verify that access tokens have a limited expiration period. Attempt to use an expired token and ensure that the API returns an error response (e.g., 401 Unauthorized).
+    Session Management:
+        Test Case 9: Check if the API properly manages user sessions and logs the user out after a specified period of inactivity.
+    Simultaneous Logins:
+        Test Case 10: Verify that the API handles multiple login attempts for the same account simultaneously without conflicts or issues.

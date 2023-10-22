@@ -1,0 +1,51 @@
+My Notes on what I will be testing on Metabase Login Feature
+
+Equivalence Partitioning (ECP):
+
+Divide the input space into different equivalence classes to ensure that you test various representative scenarios. For the login feature, these classes could be:
+Valid User Credentials (E.g., correct username and password).
+Invalid User Credentials (E.g., incorrect username or password).
+Empty Fields (i.e., both username and password fields are empty).
+Username or Password field individually empty.
+Special Characters in the username or password.
+Very Long Username and Password.
+
+
+Boundary Value Analysis (BVA):
+
+Focus on the boundaries of the input space. In the context of login, you should consider:
+The minimum and maximum allowable lengths for usernames and passwords.
+Test for the shortest and longest valid inputs.
+Test for values immediately below and above the minimum and maximum limits.
+
+
+- Risk Analysis: 
+
+Test for common security vulnerabilities such as SQL injection, cross-site scripting (XSS), and brute-force attacks.
+Data Protection Risks: Ensure that user credentials are securely stored and transmitted (e.g., using encryption).
+Usability Risks: Test for user-friendly error messages and ensure that users are guided appropriately when login fails.
+
+
+Other Test Scenarios, Apart from ECP and BVA, I am considering additional scenarios such as:
+
+Testing for multiple failed login attempts and checking if the account is locked after a certain number of failed attempts.
+Testing the "Remember Me" feature.
+Testing the "Forgot Password" functionality.
+Testing the session management after successful login.
+
+-Exploratory Testing:
+
+Perform exploratory testing by using the application as an end-user, trying different inputs and sequences. This approach can uncover unexpected issues.
+
+-Positive and Negative Testing:
+
+Test with valid credentials to ensure successful login.
+Test with invalid credentials to ensure proper error handling.
+
+-Multi-User Testing:
+
+Simulate multiple users logging in simultaneously to assess system performance under load.
+
+-Usability Testing:
+
+Evaluate the user-friendliness of the login process, including the clarity of error messages and the overall user experience.

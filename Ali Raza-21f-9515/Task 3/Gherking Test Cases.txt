@@ -1,0 +1,139 @@
+Feature: Login Page 
+
+GUI
+
+  Scenario: Verify that the login page loads correctly with input fields
+    Given the login page API is accessible
+    When a user sends a GET request to the login page API
+    Then the API should respond with a status code of 200
+    And the response should contain input fields for username and password
+
+  Scenario: Check if the "Forgot Password" link is functional
+    Given the login page API is accessible
+    When a user sends a GET request to the login page API
+    Then the API should respond with a status code of 200
+    And the response should contain a functional "Forgot Password" link
+
+  Scenario: Test if the API displays an error message for empty input
+    Given the login page API is accessible
+    When a user sends a POST request to the login page API with empty username and password
+    Then the API should respond with an error message
+
+  Scenario: Ensure the API rejects login attempts with invalid characters
+    Given the login page API is accessible
+    When a user sends a POST request to the login page API with invalid characters in the username and password
+    Then the API should respond with an error message
+
+  Scenario: Verify that the "Login" API logs the user in with valid credentials
+    Given the login page API is accessible
+    When a user sends a POST request to the login page API with valid credentials
+    Then the API should respond with a status code of 200
+    And the response should contain an access token
+
+  Scenario: Check if the "Cancel" button clears the input fields
+    Given the login page API is accessible
+    When a user sends a GET request to the login page API
+    And the user enters some data in the input fields
+    And the user clicks the "Cancel" button
+    Then the input fields should be cleared
+
+  Scenario: Test if the system provides feedback on password strength
+    Given the password strength API is accessible
+    When a user sends a POST request with a new password
+    Then the API should respond with feedback on the password strength
+
+  Scenario: Ensure the system enforces a minimum password strength level
+    Given the password strength API is accessible
+    When a user sends a POST request with a weak password
+    Then the API should respond with an error message indicating the password is too weak
+
+  Scenario: Test what happens when a user is inactive and tries to resume the session
+    Given the session API is accessible
+    And the user's session has been inactive for a specified time
+    When the user tries to resume the session by sending a GET request
+    Then the API should respond with a new session or a reauthentication request
+
+  Scenario: Confirm that all links and buttons are working
+    Given the login page API is accessible
+    When a user interacts with all links and buttons on the page
+    Then the API should respond to each interaction appropriately
+
+  Scenario: Check that the "Back" button functions as expected
+    Given the login page API is accessible
+    When a user navigates to a different page and then clicks the "Back" button
+    Then the API should respond by returning the user to the previous page
+
+  Scenario: Test the GUI's behavior when the server is down
+    Given the server is down or experiencing issues
+    When a user sends a request to the login page API
+    Then the API should respond with an appropriate error message indicating server issues
+
+  Scenario: Check if the GUI supports multiple languages
+    Given the login page API is accessible
+    When a user changes the language setting to a different language
+    Then the API should respond by displaying text labels in the selected language
+
+  Scenario: Test for concurrent user logins
+    Given the login page API is accessible
+    When multiple users attempt to log in simultaneously using the same account
+    Then the API should handle concurrent logins appropriately, allowing each user to log in successfully
+
+API
+
+  Scenario: User logs in successfully with valid credentials
+    Given the login page API is accessible
+    When a user logs in with valid credentials
+    Then the API should respond with a status code of 200
+    And the response should include an access token
+
+  Scenario: User attempts to log in with an invalid username
+    Given the login page API is accessible
+    When a user logs in with an invalid or non-existing username
+    Then the API should respond with a status code of 401 Unauthorized
+    And the response should contain an appropriate error message
+
+  Scenario: User attempts to log in with an incorrect password
+    Given the login page API is accessible
+    When a user logs in with a valid username and an incorrect password
+    Then the API should respond with a status code of 401 Unauthorized
+    And the response should contain an appropriate error message
+
+  Scenario: User attempts to log in with empty username and password fields
+    Given the login page API is accessible
+    When a user logs in with empty username and password fields
+    Then the API should respond with a status code of 400 Bad Request
+    And the response should contain an appropriate error message
+
+  Scenario: User exceeds the maximum login attempts, resulting in a locked account
+    Given the login page API is accessible
+    When a user exceeds the maximum login attempts
+    Then the API should respond with a status code indicating an account lock
+    And the response should contain an appropriate error message
+
+  Scenario: User triggers rate limiting by sending a large number of login requests
+    Given the login page API is accessible
+    When a user sends a large number of login requests in a short time frame
+    Then the API should respond with a rate-limit exceeded status code
+    And the response should contain an appropriate error message
+
+  Scenario: API provides clear and informative error messages for various error scenarios
+    Given the login page API is accessible
+    When a user encounters various error scenarios while logging in
+    Then the API should respond with informative error messages for each scenario
+
+  Scenario: Verify that access tokens have a limited expiration period
+    Given the login page API is accessible
+    When a user attempts to use an expired access token
+    Then the API should respond with a status code of 401 Unauthorized
+    And the response should contain an appropriate error message
+
+  Scenario: User session management properly logs out users after a period of inactivity
+    Given the login page API is accessible
+    And the user has an active session
+    When the user's session becomes inactive for a specified period
+    Then the API should automatically log the user out
+
+  Scenario: API handles multiple login attempts for the same account simultaneously
+    Given the login page API is accessible
+    When multiple users attempt to log in simultaneously using the same account
+    Then the API should handle simultaneous logins without conflicts or issues
